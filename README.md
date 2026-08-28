@@ -54,7 +54,19 @@ too). Source is 453x453, which is a little soft on a retina display at this
 size; export the replacement at 900px or larger. For a portrait crop, set a
 taller `height` and use `object-position` to pick what stays in frame.
 
-**Update the CV** — overwrite `files/cv.pdf`.
+**Update the CV** — do *not* overwrite `files/cv.pdf` by hand. It is generated:
+
+```bash
+python3 ../CV/make_web_cv.py
+```
+
+`CV/CV_XG.tex` stays the single source of truth. The script derives the public
+copy from it, removing the personal phone number and pointing the Website line
+at gaoxiaoya.com. The full CV (with phone) is what goes to search committees —
+`CV/CV_XG_2026August.pdf`. Re-run the script after any CV edit.
+
+It aborts rather than publishing if the phone number survives the transform, or
+if the contact block in the `.tex` changes shape.
 
 **Add a paper** — copy a `<div class="pub-entry">` block. Classes available:
 `pub-title`, `pub-authors`, `pub-venue` (italic — used for "Draft available upon
