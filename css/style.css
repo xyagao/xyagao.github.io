@@ -1,0 +1,341 @@
+/* ==========================================================================
+   Xiaoya Gao — personal academic site
+   Serif typography: Lora (headings) + Gentium Book Plus (body)
+   ========================================================================== */
+
+:root {
+  --head:   "Lora", Georgia, "Times New Roman", serif;
+  --body:   "Gentium Book Plus", "Gentium Basic", Georgia, "Times New Roman", serif;
+
+  /* Deep-sage palette. To revert to the navy/grey original:
+     --ink:#212121; --muted:#5a5a5a; --accent:#002A5C; --rule:#e2e2e2; */
+  --ink:       #1F2A22;   /* near-black, faint green cast */
+  --muted:     #5F6B60;   /* secondary text            5.6:1 */
+  --accent:    #4A6250;   /* links only                6.7:1 */
+  --rule:      #D8DED2;   /* hairlines and borders */
+  --bg:        #ffffff;
+
+  --gutter:  clamp(24px, 4vw, 72px);
+  /* Reading width for prose. `none` = span the full page.
+     Set e.g. 60rem to pull the text back into a column. */
+  --measure: none;
+  --header-h:  64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  /* Keeps the footer at the bottom of the viewport on short pages */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.125rem;     /* 18px */
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Header / navigation ------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+
+.brand {
+  font-family: var(--head);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .01em;
+}
+.brand:hover { text-decoration: none; color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: var(--head);
+  font-size: .95rem;
+  color: var(--muted);
+}
+.nav-links a:hover { color: var(--ink); text-decoration: none; }
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.nav-toggle { display: none; }
+
+.nav-burger { display: none; cursor: pointer; padding: 6px; }
+.nav-burger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  margin: 5px 0;
+  background: var(--ink);
+}
+
+/* ---------- Sections ----------------------------------------------------- */
+
+.section { padding: 56px 0 72px; }
+
+h1 {
+  font-family: var(--head);
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+/* Centered section headings, Lora 400 — as on the reference site */
+h2 {
+  font-family: var(--head);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+h2:not(:first-child) { margin-top: 60px; }
+
+.section-rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 56px 0 0;
+}
+
+p { margin: 0 0 16px; }
+
+/* ---------- Home hero ---------------------------------------------------- */
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(32px, 4vw, 56px);
+}
+
+.hero-photo {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-body { min-width: 0; }
+
+.hero-role,
+.hero-affil {
+  font-family: var(--head);
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hero-affil { margin-bottom: 22px; }
+
+.hero-bio p { margin-bottom: 16px; }
+
+.hero-meta { margin: 0 0 4px; }
+
+/* Text column — keeps a readable measure and gives the centred section
+   headings the same axis as the entries beneath them. */
+.text-col {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+/* ---------- Publication entries ------------------------------------------ */
+
+.pub-entry { margin-bottom: 34px; }
+.pub-entry:last-child { margin-bottom: 0; }
+
+.pub-title {
+  font-family: var(--head);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+.pub-title a { color: var(--ink); }
+.pub-title a:hover { color: var(--accent); }
+
+.pub-authors {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.pub-venue {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.pub-abstract { margin-top: 8px; }
+
+.pub-abstract summary {
+  font-family: var(--head);
+  font-size: .95rem;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+}
+.pub-abstract summary::-webkit-details-marker { display: none; }
+.pub-abstract summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform .15s ease;
+}
+.pub-abstract[open] summary::before { content: "▾ "; }
+.pub-abstract summary:hover { text-decoration: underline; }
+
+.pub-abstract p {
+  margin: 10px 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
+}
+.pub-abstract p::first-line { }
+
+/* ---------- Simple two-column lists (teaching) --------------------------- */
+
+.entry-list { margin: 0 0 8px; }
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1rem;
+}
+.entry:last-child { border-bottom: 0; }
+
+.entry-main { min-width: 0; }
+.entry-name { color: var(--ink); }
+.entry-sub { display: block; color: var(--muted); font-size: .9rem; font-style: italic; }
+
+.entry-years {
+  flex: 0 0 auto;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.role-block { margin-bottom: 40px; }
+.role-block:last-child { margin-bottom: 0; }
+
+.role-title {
+  font-family: var(--head);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+/* ---------- Footer ------------------------------------------------------- */
+
+main { flex: 1 0 auto; }
+
+.site-footer {
+  flex-shrink: 0;
+  padding: 26px 0 34px;
+  border-top: 1px solid var(--rule);
+  font-size: .85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Responsive --------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .nav-burger { display: block; }
+
+  .nav-links {
+    position: absolute;
+    top: var(--header-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+  }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-links li:last-child a { border-bottom: 0; }
+  .nav-links a[aria-current="page"] { border-bottom: 1px solid var(--rule); }
+
+  .nav-toggle:checked ~ .nav-links { max-height: 320px; }
+
+  .section { padding: 40px 0 56px; }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.35rem; }
+
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+  }
+  .hero-photo { flex: 0 0 auto; width: 240px; height: 240px; }
+  .hero-body { width: 100%; }
+
+  .pub-abstract p { text-align: left; }
+
+  .entry { flex-direction: column; gap: 2px; }
+}
+
+@media print {
+  .site-header, .site-footer { display: none; }
+  .pub-abstract[open] summary { display: none; }
+}
