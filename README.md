@@ -48,6 +48,22 @@ which is the readable band.
 `css/style.css`. Body is 18px; the reference site uses 14.7px, which is too small
 to read comfortably.
 
+**Light / dark** — a `☾ / ☀︎` button in the header. It sets `data-theme` on
+`<html>` and remembers the choice in `localStorage`; with nothing stored it
+follows the reader's OS setting. Three parts, all of which must agree:
+1. the light tokens on `:root` and the dark ones on `:root[data-theme="dark"]`
+   plus the `prefers-color-scheme` block (all three in `css/style.css`);
+2. a small script at the top of `<head>` on every page that applies the stored
+   theme *before first paint* — without it the page flashes white on load;
+3. the toggle script before `</body>`.
+
+To change the symbol, edit `MOON` and `SUN` in that toggle script on all three
+pages. `\u2600\uFE0E` is a deliberate sun-plus-variation-selector; without the
+`\uFE0E` the glyph renders as a colour emoji on macOS and iOS.
+
+Dark values are `--ink #E6E9E4` (14.5:1), `--muted #9BA79D` (7.1:1) and
+`--accent #A9C3B0` (9.4:1) on `--bg #151916`.
+
 **Link colour** — `--accent` (`#002A5C`). The reference site uses black links;
 navy keeps links identifiable.
 
