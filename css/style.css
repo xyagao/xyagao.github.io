@@ -16,9 +16,12 @@
   --bg:        #ffffff;
 
   --gutter:  clamp(24px, 4vw, 72px);
-  /* Reading width for prose. `none` = span the full page.
-     Set e.g. 60rem to pull the text back into a column. */
-  --measure: none;
+  /* Widest the page ever gets. Without a cap, text on a large monitor runs to
+     ~175 characters per line and paragraphs stop wrapping. 1140px keeps the
+     intro around 75 characters — wide, but still readable. */
+  --frame:   1140px;
+  /* Reading width for prose blocks inside the frame. */
+  --measure: 44rem;
   --header-h:  64px;
 }
 
@@ -47,6 +50,7 @@ img { max-width: 100%; height: auto; }
 
 .container {
   width: 100%;
+  max-width: var(--frame);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
@@ -151,9 +155,9 @@ p { margin: 0 0 16px; }
 }
 
 .hero-photo {
-  flex: 0 0 300px;
-  width: 300px;
-  height: 300px;
+  flex: 0 0 320px;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
   object-position: center;
 }

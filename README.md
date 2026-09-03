@@ -33,14 +33,16 @@ Then open http://localhost:4173
 
 ## Common edits
 
-**Width** — the layout is full-bleed: content spans the whole viewport with
-responsive side gutters. Two tokens in `css/style.css` control it:
-- `--gutter` — `clamp(24px, 4vw, 72px)`. Side padding; 24px on phones, up to
-  72px on desktop.
-- `--measure` — `none`, so prose spans the full page. At 1440px that puts
-  abstracts at roughly 160 characters per line, which is long for sustained
-  reading. Set it to a length (e.g. `60rem`) to pull prose back into a centred
-  column; headings stay on the same axis automatically.
+**Width** — three tokens in `css/style.css`:
+- `--frame` (1140px) — the widest the page ever gets. **Do not remove this cap.**
+  Without it, text on a 1920px monitor runs to ~175 characters per line and
+  paragraphs stop wrapping altogether; the layout looks broken on any large
+  display even though it seems fine on a laptop.
+- `--gutter` — `clamp(24px, 4vw, 72px)`, the side padding.
+- `--measure` (44rem) — the reading column for prose blocks inside the frame.
+
+Between 760px and 1920px this holds the intro at 56–81 characters per line,
+which is the readable band.
 
 **Typography** — `--head` (Lora) and `--body` (Gentium Book Plus) at the top of
 `css/style.css`. Body is 18px; the reference site uses 14.7px, which is too small
