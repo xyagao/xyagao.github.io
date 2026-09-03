@@ -49,10 +49,15 @@ which is the readable band.
 to read comfortably.
 
 **Light / dark** — a `☾ / ☀︎` button in the header. It sets `data-theme` on
-`<html>` and remembers the choice in `localStorage`; with nothing stored it
-follows the reader's OS setting. Three parts, all of which must agree:
+`<html>` and remembers the choice in `localStorage`.
+
+**The site always opens in light mode**, deliberately — it ignores the reader's
+OS dark-mode setting. Dark applies only when someone presses the toggle. Do not
+re-add a `prefers-color-scheme` block; that would undo it.
+
+Three parts, all of which must agree:
 1. the light tokens on `:root` and the dark ones on `:root[data-theme="dark"]`
-   plus the `prefers-color-scheme` block (all three in `css/style.css`);
+   (both in `css/style.css`);
 2. a small script at the top of `<head>` on every page that applies the stored
    theme *before first paint* — without it the page flashes white on load;
 3. the toggle script before `</body>`.
