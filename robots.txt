@@ -1,0 +1,7 @@
+# Site is not yet launched — keep it out of search engines entirely.
+# At launch: replace this file's contents with
+#     User-agent: *
+#     Allow: /
+# and remove the noindex meta tag from the three HTML pages.
+User-agent: *
+Disallow: /
