@@ -194,9 +194,7 @@ p { margin: 0 0 16px; }
 .hero-photo {
   flex: 0 0 320px;
   width: 320px;
-  height: 320px;
-  object-fit: cover;
-  object-position: center;
+  height: auto;            /* full photo at its own aspect ratio — no crop */
   filter: brightness(var(--photo-dim));
 }
 
@@ -369,7 +367,7 @@ main { flex: 1 0 auto; }
     align-items: center;
     gap: 26px;
   }
-  .hero-photo { flex: 0 0 auto; width: 240px; height: 240px; }
+  .hero-photo { flex: 0 0 auto; width: 240px; }
   .hero-body { width: 100%; }
 
   .pub-abstract p { text-align: left; }

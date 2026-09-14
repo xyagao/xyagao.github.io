@@ -72,10 +72,11 @@ Dark values are `--ink #E6E9E4` (14.5:1), `--muted #9BA79D` (7.1:1) and
 **Link colour** — `--accent` (`#002A5C`). The reference site uses black links;
 navy keeps links identifiable.
 
-**Photo** — `.hero-photo` is 300x300, square, uncropped (the source is square
-too). Source is 453x453, which is a little soft on a retina display at this
-size; export the replacement at 900px or larger. For a portrait crop, set a
-taller `height` and use `object-position` to pick what stays in frame.
+**Photo** — `.hero-photo` is 320px wide with `height: auto`, so the full
+photo shows at its own aspect ratio; nothing is cropped. The source is the
+2852x3993 portrait in `Job Market/photo.jpg`, scaled to 1000x1400 (134 KB) for
+retina. To swap it, resize the new photo to 1000px wide and overwrite
+`images/profile.jpg`, then bump `?v=` on the `<img>` in `index.html`.
 
 **Update the CV** — do *not* overwrite `files/cv.pdf` by hand. It is generated:
 
