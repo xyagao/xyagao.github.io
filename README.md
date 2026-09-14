@@ -72,11 +72,12 @@ Dark values are `--ink #E6E9E4` (14.5:1), `--muted #9BA79D` (7.1:1) and
 **Link colour** — `--accent` (`#002A5C`). The reference site uses black links;
 navy keeps links identifiable.
 
-**Photo** — `.hero-photo` is 320px wide with `height: auto`, so the full
-photo shows at its own aspect ratio; nothing is cropped. The source is the
-2852x3993 portrait in `Job Market/photo.jpg`, scaled to 1000x1400 (134 KB) for
-retina. To swap it, resize the new photo to 1000px wide and overwrite
-`images/profile.jpg`, then bump `?v=` on the `<img>` in `index.html`.
+**Photo** — `.hero-photo` is 320px wide with `height: auto`, so the image
+renders at its own aspect ratio. The current file is a 4:5 portrait crop
+(1000x1250, 112 KB) of `Job Market/photo.jpg`: crop box (450, 680, 2350, 3055)
+on the 2852x3993 source, which keeps ~9% headroom and puts the eyes a third of
+the way down. To re-crop, change those numbers and re-run the Pillow snippet
+in the git history; then bump `?v=` on the `<img>` in `index.html`.
 
 **Update the CV** — do *not* overwrite `files/cv.pdf` by hand. It is generated:
 
